@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.menuMapper">
+    <resultMap id="menuResMap" type="com.ssm.entity.menu">
+        <id property="menu_id" column="menu_id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <resultMap id="DoubleResultMap" type="com.ssm.entity.menu" extends="menuResMap">
+        <collection property="subs" resultMap="com.ssm.mapper.subMapper.subResultMap"/>
+    </resultMap>
+
+    <insert id="insrtMenu" keyProperty="menu.menu_id" useGeneratedKeys="true">
+        insert into menu (name)values (#{menu.name});
+    </insert>
+
+
+
+    <select id="findAll" resultMap="DoubleResultMap">
+        select menu_id,name,sub_name from menu left join sub on menu.menu_id=sub.sub_id order by menu_id asc;
+
+    </select>
+
+
+</mapper>
