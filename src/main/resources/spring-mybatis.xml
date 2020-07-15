@@ -22,8 +22,7 @@
         <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
 <!--指定mapper文件的指定类的默认前缀-->
         <property name="typeAliasesPackage" value="com.ssm.entity"/>
-
-<!--        ADD-->
+<!--        adwewe-->
     </bean>
 
 
